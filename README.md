@@ -42,3 +42,10 @@ midterm and final homework<br>
 ## data.json
 以json檔形式儲存檔案，以便後續程式讀取。<br>
 ![](功能範例圖/data_1.png)
+
+## 其他內容
+
+### excel檔
+<https://1drv.ms/x/s!ArOy4OoXs3OkgYcV6ipe211rVkvL0Q?e=cAgmPB>
+
+### 參考資料
