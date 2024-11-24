@@ -1,6 +1,8 @@
 # HK3044
-midterm and final homework
-<br>
+midterm and final homework<br>
+![](功能範例圖/流程圖.png)
+
+## 預期功能
 1. 原本預計的每日一句<br>
 開啟程式後顯示今日日期與今日句子<br>
 預計句子格式：<br>
@@ -22,3 +24,21 @@ midterm and final homework
 
 - 3-2使用者自訂<br>
 使用者自行輸入「詞」與「拼音」，進行測驗。
+
+## input.py
+提供建置資料庫(json檔)功能。<br>
+提供新增資料以及更改舊有資料功能(以日期判斷)<br>
+執行後可依序輸入：
+1. 日期
+2. 句子
+3. 第一個意思
+4. 第二個意思(如果有的話，無可以enter跳過)
+5. 四縣拼音
+6. 海陸拼音
+
+功能範例圖片：<br>
+![](功能範例圖/input_1.png)
+
+## data.json
+以json檔形式儲存檔案，以便後續程式讀取。<br>
+![](功能範例圖/data_1.png)
