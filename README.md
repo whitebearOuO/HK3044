@@ -9,8 +9,6 @@ midterm and final homework<br>
 句子<br>
 四縣拼音：<br>
 海陸拼音：<br>
-<br>
-要不要做圖片?
 
 2. 查詢功能<br>
 可查詢以前的句子(日期格式例：1023)<br>
@@ -26,6 +24,9 @@ midterm and final homework<br>
 使用者自行輸入「詞」與「拼音」，進行測驗。
 
 ## input.py
+2024/11/25功能更新：提供輸入句子的第二種寫法。<br>
+因為有時四縣與海陸用字不同，同時發音也會不同，所以需獨立出來。<br>
+<br>
 提供建置資料庫(json檔)功能。<br>
 提供新增資料以及更改舊有資料功能(以日期判斷)<br>
 執行後可依序輸入：
@@ -41,7 +42,7 @@ midterm and final homework<br>
 
 ## data.json
 以json檔形式儲存檔案，以便後續程式讀取。<br>
-![](功能範例圖/data_1.png)
+![](功能範例圖/data_2.png)
 
 ## 其他內容
 

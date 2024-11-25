@@ -1,11 +1,10 @@
 import json
-import sys
 import os
 
 data = []
 
-# 如果檔案存在，讀取現有資料
-if os.path.exists('data.json'):
+# 如果檔案存在且不為空，讀取現有資料
+if os.path.exists('data.json') and os.path.getsize('data.json') > 0:
     with open('data.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -27,6 +26,7 @@ try:
                 continue
         
         sentence = input("請輸入句子: ")
+        sentence_diff = input("請輸入句子的其他寫法(例：海陸腔不同字): ")
         meaning_1 = input("請輸入第一個意思: ")
         meaning_2 = input("請輸入第二個意思: ")
         xi_ien = input("請輸入句子的四縣拼音: ")
@@ -35,6 +35,7 @@ try:
         entry = {
             "date": date,
             "sentence": sentence,
+            "sentence_diff": sentence_diff,
             "meaning-1": meaning_1,
             "meaning-2": meaning_2,
             "xi-ien": xi_ien,
