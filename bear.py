@@ -30,9 +30,9 @@ def menu_option1():
                 if(choose=="y"):
                     if(len(existing_entry["sentence_diff"])>1):
                         print("其他寫法：", existing_entry["sentence_diff"])
-                    print("意義1：", existing_entry["meaning-1"])
+                    print("意義1 ：", existing_entry["meaning-1"])
                     if(len(existing_entry["meaning-2"])>1):
-                        print("意義2：", existing_entry["meaning-2"])
+                        print("意義2 ：", existing_entry["meaning-2"])
                     print("音標（四縣腔）：", existing_entry["xi-ien"])
                     print("音標（海陸腔）：", existing_entry["hoi-liug"])
                 print("<回到主菜單>")
