@@ -100,6 +100,6 @@ print(f"測驗結束！你獲得了 {score}/{num_questions} 分！\n")
 print("以下是題目與正確答案：")
 for result in results:
     print(f"題目：{result['sentence']}")
-    print(f"正確答案：\n四縣 {result['xi-ien']} \n 海陸 {result['hoi-liug']}")
+    print(f"正確答案：\n四縣 {result['xi-ien']} \n海陸 {result['hoi-liug']}")
     print(f"你的答案：{result['user_answer']}")
     print(f"是否正確：{'正確' if result['correct'] else '錯誤'}\n")
