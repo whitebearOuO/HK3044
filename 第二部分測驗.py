@@ -1,7 +1,6 @@
 import json
 import os
-import bear
-
+import random 
 #呼叫資料庫
 with open("data.json", "r", encoding="utf-8") as file:
     data = json.load(file)  # 讀取 JSON 資料
@@ -9,12 +8,10 @@ with open("data.json", "r", encoding="utf-8") as file:
 #分數初始化
 score = 0
 
-#隨機變數
-import random 
+
 
 #隨機五題
 selected_questions = random.sample(list(data.items()), 5)
-correct_answer = (random_sample.items()) #這邊我有點不確定要怎麼顯示
 
 #定義題數
 number =1 
@@ -23,8 +20,8 @@ number =1
 user_answers={}
 
 #遊戲開始
-print("拼音測驗")
-print("本次測驗一共有 5 題，請根據看到的諺語，拚寫出客語音標。 \n")
+print("拼寫測驗")
+print("本次測驗一共有 5 題，請根據看到的諺語，拼寫出客語音標。 \n")
 
 #迴圈
 for i, (question, correct_answer) in enumerate(selected_questions, 1):
@@ -41,17 +38,11 @@ for i, (question, correct_answer) in enumerate(selected_questions, 1):
 
 # 顯示分數
 print(f"測驗結束！你獲得了{score}/5 分！\n")
-def 
- print("<回到主菜單>")
-        print()
-
 # 顯示正確答案
 print("以下是正確答案：")
-for question ,correct_answer  in selected_questions：
+for question ,correct_answer  in selected_questions ：
     print(f"諺語：{question}")
-    print(f"拼音：{correct_answer[]} \n ")
-
-
+    print(f"拼音：{correct_answer} \n ")
 
 
 
