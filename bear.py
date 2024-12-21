@@ -26,7 +26,7 @@ def menu_option1(): #諺語查詢功能
             existing_entry = next((entry for entry in data if entry["date"] == date), None)
             if existing_entry:
                 print(date, ": ", existing_entry["sentence"], sep="") #輸出查詢的諺語
-                choose=input("想查看諺語詳細內容嗎？[y/n]： ").lower
+                choose=input("想查看諺語詳細內容嗎？[y/n]： ").lower()
                 if(choose=="y"): #提供諺語詳細資料
                     if(len(existing_entry["sentence_diff"])>1): #如果有其他寫法再輸出
                         print("其他寫法：", existing_entry["sentence_diff"])
