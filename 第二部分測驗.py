@@ -1,8 +1,6 @@
 import json
 import random
 
-
-
 # 呼叫資料庫
 try:
     with open("data.json", "r", encoding="utf-8") as file:
@@ -12,59 +10,49 @@ except (FileNotFoundError, json.JSONDecodeError) as e:
     exit()
 
 # 確保資料庫格式正確
-if not isinstance(data, dict):
-    print("資料庫格式錯誤，應該是題目對應答案的字典格式！")
+if not isinstance(data, list):
+    print("資料庫格式錯誤，應該是題目列表格式！")
     exit()
 
-# 定義日期選擇變數
-date = list(data.keys())  # 範圍根據資料庫中的鍵
-print(f"資料庫中共有 {len(date)} 個題目範圍。")
+# 獲取所有日期
+dates = [item["date"] for item in data]
+print(f"資料庫中共有 {len(dates)} 個諺語，日期範圍為：{min(dates)} 至 {max(dates)}。\n")
 
-# 顯示可選的題目範圍
-for i, key in enumerate(date, 1):
-    print(f"{i}: {key}")
-
-# 用戶選擇範圍
+# 用戶選擇日期範圍
 while True:
-    try:
-        start = int(input("請輸入起始範圍的編號："))
-        end = int(input("請輸入結束範圍的編號："))
-        if 1 <= start <= len(date) and 1 <= end <= len(date) and start <= end:
-            break
-        else:
-            print("請確保範圍有效，且起始值小於等於結束值！")
-    except ValueError:
-        print("請輸入有效的整數範圍！")
+    start_date = input("請輸入起始日期（格式如 1201）：").strip()
+    end_date = input("請輸入結束日期（格式如 1203）：").strip()
 
-# 根據範圍過濾資料
-selected_data_keys = date[start - 1:end]
-filtered_data = {key: data[key] for key in selected_data_keys}
+    # 篩選範圍內的資料
+    selected_data = [item for item in data if start_date <= item["date"] <= end_date]
 
-# 計算題目總數
-total_questions = len(filtered_data)
-print(f"範圍內共有 {total_questions} 題目。")
+    if selected_data:
+        print(f"範圍內共有 {len(selected_data)} 題。\n")
+        break
+    else:
+        print("範圍內無題目，請重新輸入日期範圍！")
 
 # 用戶選擇題數
 while True:
     try:
-        num_questions = int(input(f"請輸入想測驗的題數（最多 {total_questions} 題）："))
-        if 1 <= num_questions <= total_questions:
+        num_questions = int(input(f"請輸入想測驗的題數（最多 {len(selected_data)} 題）："))
+        if 1 <= num_questions <= len(selected_data):
             break
         else:
-            print(f"請輸入 1 到 {total_questions} 之間的數字！")
+            print(f"請輸入 1 到 {len(selected_data)} 之間的數字！")
     except ValueError:
         print("請輸入有效的整數！")
 
 # 隨機選取題目
-selected_questions = random.sample(list(filtered_data.values()), num_questions)
+selected_questions = random.sample(selected_data, num_questions)
 
 # 初始化分數與記錄回答
 score = 0
 results = []  # 用於記錄題目與答案
 
 # 開始遊戲提示
-print("\n拼寫測驗")
-print(f"本次測驗共有 {num_questions} 題，請根據看到的句子，輸入正確的拼音。\n")
+print("\n拼寫測驗\n")
+print(f"本次測驗共有 {num_questions} 題，請根據看到的句子，輸入正確的拼音(四縣腔與海陸腔均可。\n")
 
 # 測驗迴圈
 for i, question_data in enumerate(selected_questions, 1):
@@ -82,7 +70,7 @@ for i, question_data in enumerate(selected_questions, 1):
         print("答對了！\n")
         score += 1
     else:
-        print(f"答錯了！")
+        print(f"答錯了！正確答案可能是：{xi_ien} 或 {hoi_liug}\n")
 
     # 記錄結果
     results.append({
@@ -100,6 +88,6 @@ print(f"測驗結束！你獲得了 {score}/{num_questions} 分！\n")
 print("以下是題目與正確答案：")
 for result in results:
     print(f"題目：{result['sentence']}")
-    print(f"正確答案：\n四縣 {result['xi-ien']} \n海陸 {result['hoi-liug']}")
+    print(f"正確答案：{result['xi-ien']} 或 {result['hoi-liug']}")
     print(f"你的答案：{result['user_answer']}")
     print(f"是否正確：{'正確' if result['correct'] else '錯誤'}\n")
