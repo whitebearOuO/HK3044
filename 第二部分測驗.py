@@ -14,23 +14,34 @@ if not isinstance(data, list):
     print("資料庫格式錯誤，應該是題目列表格式！")
     exit()
 
-# 獲取所有日期
-dates = [item["date"] for item in data]
-print(f"資料庫中共有 {len(dates)} 個諺語，日期範圍為：{min(dates)} 至 {max(dates)}。\n")
+# 獲取所有日期範圍
+dates = [int(item["date"]) for item in data]  # 將日期轉為整數
+min_date, max_date = min(dates), max(dates)
+print(f"資料庫中共有 {len(dates)} 個諺語，日期範圍為：{min_date} 至 {max_date}。\n")
 
 # 用戶選擇日期範圍
 while True:
-    start_date = input("請輸入起始日期（格式如 1201）：").strip()
-    end_date = input("請輸入結束日期（格式如 1203）：").strip()
+    try:
+        start_date = int(input(f"請輸入起始日期（格式如 {min_date}）：").strip())
+        end_date = int(input(f"請輸入結束日期（格式如 {max_date}）：").strip())
 
-    # 篩選範圍內的資料
-    selected_data = [item for item in data if start_date <= item["date"] <= end_date]
+        # 範圍檢查
+        if start_date < min_date or end_date > max_date or start_date > end_date:
+            print("日期範圍錯誤，請確保起始日期和結束日期在正確範圍內且順序正確！\n")
+            continue
 
-    if selected_data:
-        print(f"範圍內共有 {len(selected_data)} 題。\n")
-        break
-    else:
-        print("範圍內無題目，請重新輸入日期範圍！")
+        # 篩選範圍內的資料
+        selected_data = [
+            item for item in data if start_date <= int(item["date"]) <= end_date
+        ]
+
+        if selected_data:
+            print(f"範圍內共有 {len(selected_data)} 題。\n")
+            break
+        else:
+            print("範圍內無題目，請重新輸入日期範圍！")
+    except ValueError:
+        print("請輸入有效的日期數字！\n")
 
 # 用戶選擇題數
 while True:
