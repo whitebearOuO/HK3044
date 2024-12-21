@@ -1,6 +1,8 @@
 import json
 import random
 
+
+
 # 呼叫資料庫
 try:
     with open("data.json", "r", encoding="utf-8") as file:
@@ -69,7 +71,7 @@ for i, question_data in enumerate(selected_questions, 1):
     sentence = question_data.get("sentence", "題目缺失")
     xi_ien = question_data.get("xi-ien", "無正確答案")
     hoi_liug = question_data.get("hoi-liug", "無正確答案")
-    
+
     # 顯示題目
     print(f"第 {i} 題：{sentence}")
     user_answer = input("請輸入答案：").strip()
