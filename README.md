@@ -1,6 +1,6 @@
 # HK3044
 <br>
-如果想要使用此程式，請參考[執行程式](https://github.com/whitebearOuO/HK3044/tree/main/%E5%9F%B7%E8%A1%8C%E7%A8%8B%E5%BC%8F)內的README.md。<br>
+如果想要使用此程式，請參考「執行程式」資料夾內的README.md。<br>
 <br>
 
 ![](功能範例圖/流程圖.png)
